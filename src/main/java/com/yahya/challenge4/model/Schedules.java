@@ -17,9 +17,9 @@ public class Schedules {
     @Column(name = "schedule_id")
     private Integer scheduleId;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "film_code")
-    private List<Films> filmCode;
+    private Films filmCode;
 
     @Column(name="tgl_tayang")
     private Date tglTayang;
