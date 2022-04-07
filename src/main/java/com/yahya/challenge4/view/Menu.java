@@ -9,10 +9,11 @@ public class Menu {
     private FilmsController filmController;
 
     public void Menu(){
-        String nameFilm = "", tayang="";
         Scanner scan = new Scanner(System.in);
-        System.out.println("masukan nama film :"+ scan.nextLine());
-        System.out.println("tayang atau tidak :"+ scan.nextLine());
+        System.out.println("masukan nama film :");
+        String nameFilm = scan.nextLine();
+        System.out.println("tayang atau tidak :");
+        String tayang = scan.nextLine();
         scan.close();
         filmController.addFilms(nameFilm, tayang);
 
