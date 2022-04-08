@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +15,8 @@ public class FilmServiceImp implements FilmService{
 
     @PersistenceContext
     private EntityManager em;
+
+
     @Autowired
     private FilmRepository filmRepository;
 
@@ -26,22 +29,23 @@ public class FilmServiceImp implements FilmService{
     }
 
     @Override
-    public Optional<Films> getFilm(Integer codeFilm) {
-        return filmRepository.findById(codeFilm);
+    public Optional<Films> getFilm(Long codeFilm) {
+        return filmRepository.getFilmName(codeFilm);
     }
 
     @Override
-    public void updateFilm(Integer filmCode, String filmNameNew, Boolean TayangNew) {
+    public void updateFilm(Long filmCode, String filmNameNew, Boolean TayangNew) {
         filmRepository.updateFilm(filmCode,filmNameNew,TayangNew);
     }
 
     @Override
-    public void deleteFilm(Integer filmCode,String filmName) {
-        filmRepository.deleteFilm(filmCode,filmName);
+    public void deleteFilm(String filmName) {
+        filmRepository.deleteFilm(filmName);
     }
 
     @Override
-    public Optional<Films> getFilmTayang(Boolean Tayang) {
+    public List<Films> getFilmTayang(Boolean Tayang) {
         return filmRepository.sedangTayang(Tayang);
     }
+
 }

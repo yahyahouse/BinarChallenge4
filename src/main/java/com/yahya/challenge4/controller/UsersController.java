@@ -9,8 +9,8 @@ public class UsersController {
     @Autowired
     private UsersService userService;
 
-    public String addUser(String username, String password,String email){
-        userService.addUser(username, password,email);
+    public String addUser(Integer userId,String username, String password,String email){
+        userService.addUser(userId,username, password,email);
         return "user berhasil di tambahkan";
     }
 

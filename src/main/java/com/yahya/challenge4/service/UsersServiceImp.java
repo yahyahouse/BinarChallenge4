@@ -1,6 +1,5 @@
 package com.yahya.challenge4.service;
 
-import com.yahya.challenge4.model.Films;
 import com.yahya.challenge4.model.Users;
 import com.yahya.challenge4.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ public class UsersServiceImp implements UsersService{
     @Autowired
     private UsersRepository usersRepository;
     @Override
-    public void addUser(String username, String password, String email) {
+    public void addUser(Integer userId,String username, String password, String email) {
         Users user = new Users();
         user.setUsername(username);
         user.setPassword(password);

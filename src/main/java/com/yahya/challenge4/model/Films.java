@@ -10,14 +10,21 @@ import javax.persistence.*;
 @Entity(name = "films")
 public class Films {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_code")
-    private Integer filmCode;
+    private Long filmCode;
 
     @Column(name = "film_name")
     private String filmName;
 
     @Column(name = "tayang")
     private Boolean tayang;
+
+    @Override
+    public String toString() {
+        return "films [  film_id : " + filmCode+ "" +
+                "\n\t\t film_name : " + filmName + " \n\t\t tayang : " + tayang + " ]";
+    }
+
 
 }

@@ -23,22 +23,23 @@ public class FilmsTest {
     @Test
     @DisplayName("Test GET Film")
     public void getFilms() {
-        filmController.getFilms(3);
+        filmController.getFilms(1L);
     }
 
     @Test
     @DisplayName("Test UPDATE film")
-    public void updateFilm(){filmController.updateFilm(5,"Programer Naik Haji",true);}
+    public void updateFilm(){filmController.updateFilm(1L,"Programer Naik Gaji",true);}
 
     @Test
     @DisplayName("Test DELETE film")
     public void deleteFilm(){
-        filmController.deleteFilm(11,"Captain America");
+        filmController.deleteFilm("Programer Naik Haji");
     }
 
     @Test
     @DisplayName("Test menampilkan film tayang")
     public void filmTayang(){
-        filmController.filmTayang(false);
+        filmController.filmTayang(true);
     }
+
 }

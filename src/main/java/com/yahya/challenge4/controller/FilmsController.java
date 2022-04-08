@@ -5,7 +5,8 @@ import com.yahya.challenge4.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.Optional;
+import java.util.List;
+
 
 @Controller
 public class FilmsController {
@@ -17,24 +18,28 @@ public class FilmsController {
         filmService.addFilms(nameFilm,Tayang);
         return"film berhasil ditambahkan";
     }
-    public void getFilms(Integer codeFilm) {
+    public Films getFilms(Long codeFilm) {
         Films film = filmService.getFilm(codeFilm).get();
         System.out.println("Film Name : " + film.getFilmName() + "\nTayang : " + film.getTayang());
+        return film;
     }
 
-    public String updateFilm(Integer filmCode, String filmName, Boolean Tayang){
+    public String updateFilm(Long filmCode, String filmName, Boolean Tayang){
         filmService.updateFilm(filmCode,filmName,Tayang);
         return "update berhasil";
     }
 
-    public String deleteFilm(Integer filmCode,String filmName){
-        filmService.deleteFilm(filmCode,filmName);
+    public String deleteFilm(String filmName){
+        filmService.deleteFilm(filmName);
         return "berhasil menghapus";
     }
 
-    public String filmTayang(Boolean Tayang){
-        Optional<Films> film = filmService.getFilmTayang(Tayang);
-        System.out.println("Film name: "+film.get().getFilmName());
-        return "Done";
+    public List<Films> filmTayang(Boolean Tayang){
+        List<Films> films = filmService.getFilmTayang(Tayang);
+        films.forEach(film ->{
+            System.out.println(film.getFilmName());
+        });
+        return films;
     }
+
 }

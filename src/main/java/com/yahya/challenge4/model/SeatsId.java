@@ -11,6 +11,10 @@ import java.io.Serializable;
 @Setter
 @Embeddable
 public class SeatsId implements Serializable {
-    private String studioName;
+    public enum studioName{
+        A,B,C;
+    }
+    @Enumerated(EnumType.ORDINAL)
+    private studioName studioName;
     private Integer noKursi;
 }

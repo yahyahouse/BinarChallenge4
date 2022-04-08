@@ -2,7 +2,6 @@ package com.yahya.challenge4;
 
 
 import com.yahya.challenge4.controller.UsersController;
-import com.yahya.challenge4.service.UsersService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,13 +17,13 @@ public class UsersTest {
     @Test
     @DisplayName("Test menambahkan user")
     public void addUser(){
-        String tambah = usersController.addUser("wijaya","4321","wijaya@email.com");
+        String tambah = usersController.addUser(1,"wijaya","4321","wijaya@email.com");
         Assertions.assertEquals("user berhasil di tambahkan",tambah);
     }
 
     @Test
     @DisplayName("Test UPDATE user")
-    public void updateUser(){usersController.updateUser(6,"jaya","1234567","jaya@email.com");}
+    public void updateUser(){usersController.updateUser(1,"yahya","1234567","yahya@email.com");}
 
     @Test
     @DisplayName("Test DELETE user")
