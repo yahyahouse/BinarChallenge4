@@ -18,6 +18,6 @@ public class Films {
     private String filmName;
 
     @Column(name = "tayang")
-    private String tayang;
+    private Boolean tayang;
 
 }

@@ -10,8 +10,8 @@ public class Challenge4Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Challenge4Application.class, args);
-		Menu menu = new Menu();
-		menu.Menu();
+//		Menu menu = new Menu();
+//		menu.Menu();
 
 	}
 

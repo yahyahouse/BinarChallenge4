@@ -18,7 +18,7 @@ public class FilmServiceImp implements FilmService{
     private FilmRepository filmRepository;
 
     @Override
-    public void saveFilms(String nameFilm, String Tayang) {
+    public void addFilms(String nameFilm, Boolean Tayang) {
         Films film = new Films();
         film.setFilmName(nameFilm);
         film.setTayang(Tayang);
@@ -31,12 +31,17 @@ public class FilmServiceImp implements FilmService{
     }
 
     @Override
-    public void updateFilm(Integer filmCode, String filmNameNew, String TayangNew) {
+    public void updateFilm(Integer filmCode, String filmNameNew, Boolean TayangNew) {
         filmRepository.updateFilm(filmCode,filmNameNew,TayangNew);
     }
 
     @Override
     public void deleteFilm(Integer filmCode,String filmName) {
         filmRepository.deleteFilm(filmCode,filmName);
+    }
+
+    @Override
+    public Optional<Films> getFilmTayang(Boolean Tayang) {
+        return filmRepository.sedangTayang(Tayang);
     }
 }
