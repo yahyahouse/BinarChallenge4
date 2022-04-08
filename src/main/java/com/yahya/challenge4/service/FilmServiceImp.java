@@ -29,4 +29,14 @@ public class FilmServiceImp implements FilmService{
     public Optional<Films> getFilm(Integer codeFilm) {
         return filmRepository.findById(codeFilm);
     }
+
+    @Override
+    public void updateFilm(Integer filmCode, String filmNameNew, String TayangNew) {
+        filmRepository.updateFilm(filmCode,filmNameNew,TayangNew);
+    }
+
+    @Override
+    public void deleteFilm(Integer filmCode,String filmName) {
+        filmRepository.deleteFilm(filmCode,filmName);
+    }
 }

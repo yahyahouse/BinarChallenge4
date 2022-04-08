@@ -16,13 +16,23 @@ public class FilmsTest {
     @Test
     @DisplayName("Test menambahkan film")
     public void addFilm(){
-        String tambah = filmController.addFilms("Eat", "Tayang");
+        String tambah = filmController.addFilms("Captain America", "Tidak Tayang");
         Assertions.assertEquals("film berhasil ditambahkan",tambah);
     }
 
     @Test
     @DisplayName("Test GET Film")
-    public void getUser() {
+    public void getFilms() {
         filmController.getFilms(1);
+    }
+
+    @Test
+    @DisplayName("Test UPDATE film")
+    public void updateFilm(){filmController.updateFilm(5,"Programer Naik Haji","Tayang");}
+
+    @Test
+    @DisplayName("Test DELETE film")
+    public void deleteFilm(){
+        filmController.deleteFilm(11,"Captain America");
     }
 }

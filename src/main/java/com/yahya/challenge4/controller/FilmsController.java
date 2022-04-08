@@ -19,4 +19,14 @@ public class FilmsController {
         Films film = filmService.getFilm(codeFilm).get();
         System.out.println("Film Name : " + film.getFilmName() + "\nTayang : " + film.getTayang());
     }
+
+    public String updateFilm(Integer filmCode, String filmName, String Tayang){
+        filmService.updateFilm(filmCode,filmName,Tayang);
+        return "update berhasil";
+    }
+
+    public String deleteFilm(Integer filmCode,String filmName){
+        filmService.deleteFilm(filmCode,filmName);
+        return "berhasil menghapus";
+    }
 }
