@@ -13,7 +13,9 @@ public interface FilmService {
     Optional<Films> getFilm(Long codeFilm);
     public void updateFilm(Long filmCode, String filmNameNew, Boolean TayangNew);
     public void deleteFilm(String filmName);
+    void deleteFilmById(Long filmCode);
     List<Films> getFilmTayang (Boolean Tayang);
+    List<Films> getAll();
 
 
 }

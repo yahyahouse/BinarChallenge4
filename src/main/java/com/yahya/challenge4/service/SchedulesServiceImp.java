@@ -33,8 +33,8 @@ public class SchedulesServiceImp implements SchedulesService{
     }
 
     @Override
-    public List<Schedules> findFilmsSchedules(Long scheduleId) {
-        return schedulesRepository.findFilmsSchedules(scheduleId);
+    public List<Schedules> findFilmsSchedules(Long filmCode) {
+        return schedulesRepository.findFilmsSchedules(filmCode);
     }
 
 //    @Override

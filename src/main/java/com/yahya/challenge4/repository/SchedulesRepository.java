@@ -23,7 +23,7 @@ public interface SchedulesRepository extends JpaRepository<Schedules,Integer> {
 //    Schedules findFilmCode(Long filmCode);
 
     @Query(value = "select * from schedules s where s.film_code=?1", nativeQuery = true)
-    List<Schedules> findFilmsSchedules(Long filmId);
+    List<Schedules> findFilmsSchedules(Long filmCode);
 
 
 }

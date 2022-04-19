@@ -44,8 +44,18 @@ public class FilmServiceImp implements FilmService{
     }
 
     @Override
+    public void deleteFilmById(Long filmCode) {
+        filmRepository.deleteFilmById(filmCode);
+    }
+
+    @Override
     public List<Films> getFilmTayang(Boolean Tayang) {
         return filmRepository.sedangTayang(Tayang);
+    }
+
+    @Override
+    public List<Films> getAll() {
+        return filmRepository.findAll();
     }
 
 }

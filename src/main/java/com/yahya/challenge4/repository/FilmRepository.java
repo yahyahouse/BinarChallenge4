@@ -28,6 +28,11 @@ public interface FilmRepository extends JpaRepository<Films,Integer> {
     @Query("DELETE FROM films f WHERE f.filmName=?1")
     void deleteFilm(String filmName);
 
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM films f WHERE f.filmCode=?1")
+    void deleteFilmById(Long filmCode);
+
     @Query("SELECT f FROM films f WHERE f.tayang=:tayang")
     List<Films> sedangTayang(Boolean tayang);
 
