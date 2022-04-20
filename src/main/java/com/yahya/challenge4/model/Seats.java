@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="seats")
 public class Seats {
     @EmbeddedId
     private SeatsId Id;

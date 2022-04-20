@@ -27,4 +27,9 @@ public class UsersServiceImp implements UsersService{
     public void deleteFilm(String username) {
         usersRepository.deleteUser(username);
     }
+
+    @Override
+    public Users getUsersByUsername(String username) {
+        return usersRepository.findByUsername(username);
+    }
 }
