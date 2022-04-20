@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Integer> {
     @Transactional
@@ -20,4 +22,8 @@ public interface UsersRepository extends JpaRepository<Users,Integer> {
     void deleteUser(String username);
 
     public Users findByUsername(String username);
+
+    @Query("SELECT u FROM users u WHERE u.username=:username")
+    Optional<Users> getUsersByUsername(String username);
+
 }

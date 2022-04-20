@@ -58,4 +58,9 @@ public class FilmServiceImp implements FilmService{
         return filmRepository.findAll();
     }
 
+    @Override
+    public Films findFilmCode(Long filmCode) {
+        return filmRepository.findFilmCode(filmCode);
+    }
+
 }

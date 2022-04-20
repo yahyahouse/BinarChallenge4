@@ -16,6 +16,7 @@ public interface FilmService {
     void deleteFilmById(Long filmCode);
     List<Films> getFilmTayang (Boolean Tayang);
     List<Films> getAll();
+    public Films findFilmCode(Long filmCode);
 
 
 }

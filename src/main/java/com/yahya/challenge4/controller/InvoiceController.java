@@ -7,6 +7,7 @@ import com.yahya.challenge4.service.InvoiceService;
 import com.yahya.challenge4.service.SchedulesService;
 import com.yahya.challenge4.service.SeatsService;
 import com.yahya.challenge4.service.UsersService;
+import io.swagger.v3.oas.annotations.Operation;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class InvoiceController {
     @Autowired
     SeatsService seatsService;
 
+    @Operation(summary = "menampilkan tiket dengan format pdf")
     @GetMapping("/tiket-bioskop")
     public void generateInvoice(HttpServletResponse response) throws IOException, JRException {
         JasperReport sourceFileName = JasperCompileManager

@@ -42,4 +42,8 @@ public interface FilmRepository extends JpaRepository<Films,Integer> {
     @Query("select s from schedules s where s.filmCode =:filmCode")
     List<Schedules> findByFilmCode(Long filmCode);
 
+    @Query("select f from films f where f.filmCode=:filmCode")
+    Films findFilmCode(Long filmCode);
+
+
 }

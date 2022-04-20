@@ -1,7 +1,7 @@
 package com.yahya.challenge4.service;
 
+import com.yahya.challenge4.model.Films;
 import com.yahya.challenge4.model.Schedules;
-import com.yahya.challenge4.repository.FilmRepository;
 import com.yahya.challenge4.repository.SchedulesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class SchedulesServiceImp implements SchedulesService{
     private SchedulesRepository schedulesRepository;
 
     @Autowired
-    private FilmRepository filmRepository;
+    private FilmService filmService;
 
     @Override
     public void addSchedules(Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode) {
@@ -28,7 +28,8 @@ public class SchedulesServiceImp implements SchedulesService{
         schedule.setJamMulai(jamMulai);
         schedule.setJamSelesai(jamSelesai);
         schedule.setTglTayang(tglTayang);
-        schedule.setFilmCode(filmRepository.getById(1));
+        Films film = filmService.findFilmCode(filmCode);
+        schedule.setFilmCode(film);
         schedulesRepository.save(schedule);
     }
 

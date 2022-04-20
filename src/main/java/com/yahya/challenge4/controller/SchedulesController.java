@@ -2,11 +2,9 @@ package com.yahya.challenge4.controller;
 
 import com.yahya.challenge4.model.Schedules;
 import com.yahya.challenge4.service.SchedulesService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,10 +15,14 @@ public class SchedulesController {
     @Autowired
     private SchedulesService schedulesService;
 
+    @Operation(summary = "menambahkan jadwal pada tabel schedules di database")
+    @PostMapping(value = "/add-schedules")
     public String addSchedule(Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode){
         schedulesService.addSchedules(harga,jamMulai,jamSelesai,tglTayang,filmCode);
         return"jadwal berhasil ditambahkan";
     }
+
+    @Operation(summary = "menampilkan jadwal film sesuai dengan code film")
     @GetMapping(value="/film-schedules/{filmCode}")
     public List<Schedules> findFilmsSchedules(@PathVariable("filmCode") Long filmCode) {
         List<Schedules> schedules = schedulesService.findFilmsSchedules(filmCode);
