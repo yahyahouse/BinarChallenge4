@@ -18,7 +18,7 @@
         <band height="79" splitType="Stretch">
             <staticText>
                 <reportElement x="25" y="10" width="766" height="60" uuid="2a9857d1-84d1-4e0f-980b-ff0fb38b9697"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle" markup="">
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
                     <font fontName="Bauhaus 93" size="26"/>
                     <paragraph lineSpacing="Single"/>
                 </textElement>
@@ -146,6 +146,13 @@
         <band height="41" splitType="Stretch">
             <textField pattern="MMMMM dd, yyyy">
                 <reportElement x="0" y="0" width="180" height="41" uuid="f4135013-b38f-4503-94a6-80172044d029"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <textField pattern="HH:mm">
+                <reportElement x="180" y="0" width="200" height="41" uuid="2e2a74ef-e581-43c7-99b0-8ee66eee76e5"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="16"/>
                 </textElement>

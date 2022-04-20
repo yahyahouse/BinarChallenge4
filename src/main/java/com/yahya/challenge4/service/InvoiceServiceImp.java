@@ -49,14 +49,14 @@ public class InvoiceServiceImp implements InvoiceService{
         Map<String, String> data = new HashMap<>();
         Users user = usersService.getUsersByUsername("yahya");
         data.put("username", user.getUsername());
-        Seats seat = seatsService.getNoKursi(1);
+        Seats seat = seatsService.getNoKursi(1,"A");
         data.put("noKursi", String.valueOf(seat.getId().getNoKursi()));
         data.put("studioName", String.valueOf(seat.getId().getStudioName()));
-        List<Schedules> schedule = schedulesService.findFilmsSchedules(1L);
-        data.put("filmName", String.valueOf(schedule.get(1).getFilmCode().getFilmName()));
-        data.put("tglTayang",schedule.get(1).getTglTayang());
-        data.put("jamMulai",schedule.get(1).getJamMulai());
-        data.put("jamSelesai",schedule.get(1).getJamSelesai());
+        Schedules schedule = schedulesService.getSchedulesById(1L);
+        data.put("filmName", String.valueOf(schedule.getFilmCode().getFilmName()));
+        data.put("tglTayang",schedule.getTglTayang());
+        data.put("jamMulai",schedule.getJamMulai());
+        data.put("jamSelesai",schedule.getJamSelesai());
         dataList.add(data);
 
         // creating datasource from bean list
@@ -64,8 +64,8 @@ public class InvoiceServiceImp implements InvoiceService{
         Map<String, Object> parameters = new HashMap();
         parameters.put("createdBy", "Yahya");
         JasperPrint jasperPrint = JasperFillManager.fillReport(sourceFileName, parameters, beanColDataSource);
-
-
+        response.setContentType("application/pdf");
+        response.addHeader("Content-Disposition", "inline; filename=tiketBioskop.pdf;");
 
         JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
     }

@@ -10,7 +10,8 @@ public class SeatsServiceImp implements SeatsService{
     @Autowired
     private SeatsRepository seatsRepository;
     @Override
-    public Seats getNoKursi(Integer noKursi) {
-        return seatsRepository.findNoKursi(noKursi);
+    public Seats getNoKursi(Integer noKursi, String studioName) {
+
+        return seatsRepository.findNoKursi(noKursi,studioName);
     }
 }

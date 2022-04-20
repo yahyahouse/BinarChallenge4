@@ -12,5 +12,6 @@ public interface SchedulesService {
     List<Schedules> findFilmsSchedules(Long filmCode);
 //    public Schedules getSchedulesById(Long filmCode);
 //    public Schedules getSchedulesByCodeName(Long filmCode);
+    public Schedules getSchedulesById(Long scheduleId);
 
 }
