@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
     @Bean
-    public OpenAPI customOpenAPI(@Value("Binar Cinema API") String appDescription,
+    public OpenAPI customOpenAPI(@Value("Binar Challenge 4-8") String appDescription,
         @Value("v1.0.0") String appVersion) {
         return new OpenAPI().info(
-                new Info().title("Binar Chapter 4 - 8")
+                new Info().title("Binar Cinema API")
                         .version(appVersion)
                         .description(appDescription)
                         .termsOfService("http://swagger.io/terms")
