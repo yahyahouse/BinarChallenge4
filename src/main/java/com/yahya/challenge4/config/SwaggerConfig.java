@@ -7,6 +7,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+/*config : AuthEntryPointJwt, AuthTokenFilter, JwtUtils, SecurityConfig
+
+        controller : AuthController
+
+        enumeration : ERole
+
+        model : JwtResponse, MessageResponse, Roles, SignupRequest, UserDetailsImpl
+
+        repository : RoleRepository, UsersRepository
+
+        service : UserDetailsServiceImpl*/
+
 @Configuration
 public class SwaggerConfig {
     @Bean
