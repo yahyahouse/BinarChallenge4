@@ -1,5 +1,6 @@
 package com.yahya.challenge4.config;
 
+import com.yahya.challenge4.enumeration.ERole;
 import com.yahya.challenge4.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -54,7 +55,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
+                .antMatchers("/film/api/add-film").hasAuthority(ERole.ADMIN.name())
+                .antMatchers("/film/api/update-film").hasAuthority(ERole.ADMIN.name())
+                .antMatchers("/film/api/delete-film/**").hasAuthority(ERole.ADMIN.name())
+                .antMatchers("/user/api/**").hasAuthority(ERole.CUSTOMER.name())
+                .antMatchers("/film/api/film-sedang-tayang").permitAll()
+//                .antMatchers("/user/api/delete-user").hasAuthority(ERole.CUSTOMER.name())
+                .antMatchers("/schedules/api/film-schedules/**").hasAuthority(ERole.CUSTOMER.name())
+                .antMatchers("/invoice/api/tiket-bioskop").hasAuthority(ERole.CUSTOMER.name())
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
