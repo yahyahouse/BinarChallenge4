@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -35,8 +36,8 @@ public class FilmsController {
     public String addFilms(@Schema(example = "{" +
             "\"nameFilm\":\"Programmer naik haji\"," +
             "\"Tayang\":\"1\"" +
-            "}") String nameFilm, Boolean Tayang){
-        filmService.addFilms(nameFilm,Tayang);
+            "}") @RequestBody Map<String, Object> film){
+        filmService.addFilms(film.get("nameFilm").toString(), Boolean.valueOf(film.get("tayang").toString()));
         return"film berhasil ditambahkan";
     }
 
