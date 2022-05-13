@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tikerBioskop" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f89ab843-d165-4de0-87bd-bb7c71e016bb">
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="username" class="java.lang.String"/>
+    <field name="noKursi" class="java.lang.String"/>
+    <field name="studioName" class="java.lang.String"/>
+    <field name="filmName" class="java.lang.String"/>
+    <field name="tglTayang" class="java.lang.String"/>
+    <field name="jamMulai" class="java.lang.String"/>
+    <field name="jamSelesai" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <staticText>
+                <reportElement x="25" y="10" width="766" height="60" uuid="2a9857d1-84d1-4e0f-980b-ff0fb38b9697"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+                    <font fontName="Bauhaus 93" size="26"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[Tiket Binar Cinema]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="329" splitType="Stretch">
+            <textField>
+                <reportElement x="280" y="10" width="400" height="30" uuid="25531c49-1396-4c63-82d7-d4bef37df43e"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="140" y="10" width="100" height="30" uuid="69d0134a-3d1d-4818-9e97-6e7af4a6a7dc"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <text><![CDATA[Nama]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="140" y="60" width="100" height="30" uuid="85bd152a-0954-41c3-996e-b9a4eca04f98"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[No Kursi]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="280" y="60" width="400" height="30" uuid="ad882c7a-807c-44bc-8078-9a2c0622883f"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{noKursi}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="140" y="110" width="100" height="30" uuid="75b8fe5d-cb15-40b9-b8b8-fd49d3d067cd"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[Studio]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="280" y="110" width="400" height="30" uuid="467e6050-b79d-49dd-afcc-e4745c468158"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{studioName}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="140" y="160" width="100" height="30" uuid="719a7d90-e2b9-455f-a2f3-6f5df4cfddff"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[Film]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="140" y="210" width="100" height="30" uuid="12b0911e-874b-4299-b4bb-7f8a5fc4b252"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[Jadwal]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="140" y="260" width="100" height="30" uuid="8a12f311-b40f-43fd-8744-c7701d58e00b"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[Jam]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="280" y="160" width="400" height="30" uuid="bf86b0e1-2562-43ed-943d-1b628d06a462"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{filmName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="210" width="400" height="30" uuid="4a552f78-a7ed-4e22-bbbd-e8ba8597e14c"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tglTayang}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="260" width="140" height="30" uuid="8c939467-305a-4626-a080-110e9bfb71a3"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{jamMulai}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="520" y="260" width="140" height="30" uuid="d3e88aef-0022-45b0-8369-bbaa47b6bae3"/>
+                <textElement>
+                    <font fontName="SansSerif" size="20"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{jamSelesai}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="490" y="260" width="30" height="30" uuid="9036b6f5-e049-41be-ae18-a4cd733ddb2b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[-]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="420" y="260" width="70" height="30" uuid="523a3708-ec29-40fb-a61e-17edb6540d0e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[WIB]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="660" y="260" width="70" height="30" uuid="769ded79-8f65-4a91-81e2-32827ea2d2d4"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[WIB]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <summary>
+        <band height="41" splitType="Stretch">
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="0" y="0" width="180" height="41" uuid="f4135013-b38f-4503-94a6-80172044d029"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <textField pattern="HH:mm">
+                <reportElement x="180" y="0" width="200" height="41" uuid="2e2a74ef-e581-43c7-99b0-8ee66eee76e5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

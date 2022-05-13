@@ -5,6 +5,8 @@ import com.yahya.challenge4.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UsersServiceImp implements UsersService{
     @Autowired
@@ -26,5 +28,15 @@ public class UsersServiceImp implements UsersService{
     @Override
     public void deleteFilm(String username) {
         usersRepository.deleteUser(username);
+    }
+
+    @Override
+    public Users getUsersByUsername(String username) {
+        return usersRepository.findByUsername(username);
+    }
+
+    @Override
+    public Optional<Users> getUsername(String username) {
+        return usersRepository.getUsersByUsername(username);
     }
 }

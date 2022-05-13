@@ -42,4 +42,10 @@ public class FilmsTest {
         filmController.filmTayang(true);
     }
 
+    @Test
+    @DisplayName("Test mengambil data semua film")
+    public void getAll(){
+        filmController.allFilms();
+    }
+
 }
