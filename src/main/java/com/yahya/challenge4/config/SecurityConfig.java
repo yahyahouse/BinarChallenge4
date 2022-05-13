@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/film/api/update-film").hasAuthority(ERole.ADMIN.name())
                 .antMatchers("/film/api/delete-film/**").hasAuthority(ERole.ADMIN.name())
                 .antMatchers("/user/api/**").hasAuthority(ERole.CUSTOMER.name())
-                .antMatchers("/film/api/film-sedang-tayang").permitAll()
+                .antMatchers("/film/api/film-sedang-tayang").hasAuthority(ERole.CUSTOMER.name())
 //                .antMatchers("/user/api/delete-user").hasAuthority(ERole.CUSTOMER.name())
                 .antMatchers("/schedules/api/film-schedules/**").hasAuthority(ERole.CUSTOMER.name())
                 .antMatchers("/invoice/api/tiket-bioskop").hasAuthority(ERole.CUSTOMER.name())

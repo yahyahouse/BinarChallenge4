@@ -20,10 +20,18 @@ public class Films {
     @Column(name = "tayang")
     private Boolean tayang;
 
+    public Films() {
+
+    }
+
     @Override
     public String toString() {
         return "films [  film_id : " + filmCode+ "" +
                 "\n\t\t film_name : " + filmName + " \n\t\t tayang : " + tayang + " ]";
+    }
+    public Films(String filmName, Boolean tayang) {
+        this.filmName = filmName;
+        this.tayang = tayang;
     }
 
 
