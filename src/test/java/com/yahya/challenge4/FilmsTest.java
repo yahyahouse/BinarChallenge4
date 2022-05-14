@@ -19,11 +19,11 @@ public class FilmsTest {
 //        Assertions.assertEquals("film berhasil ditambahkan",tambah);
 //    }
 
-    @Test
-    @DisplayName("Test GET Film")
-    public void getFilms() {
-        filmController.getFilms(1L);
-    }
+//    @Test
+//    @DisplayName("Test GET Film")
+//    public void getFilms() {
+//        filmController.getFilms(6L);
+//    }
 
     @Test
     @DisplayName("Test UPDATE film")
