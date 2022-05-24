@@ -21,8 +21,8 @@ public class SchedulesController {
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menambahkan Jadwal",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Schedules.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Schedules.class))})})
     @Operation(summary = "menambahkan jadwal pada tabel schedules di database")
     @PostMapping(value = "/add-schedules")
     public String addSchedule(@Schema(example = "{" +
@@ -31,20 +31,20 @@ public class SchedulesController {
             "\"jamSelesai\":\"17.00\"," +
             "\"tglTayang\":\"1 Maret 2020\"," +
             "\"filmCode\":\"1\"" +
-            "}")Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode){
-        schedulesService.addSchedules(harga,jamMulai,jamSelesai,tglTayang,filmCode);
-        return"jadwal berhasil ditambahkan";
+            "}") Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode) {
+        schedulesService.addSchedules(harga, jamMulai, jamSelesai, tglTayang, filmCode);
+        return "jadwal berhasil ditambahkan";
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menampilkan Jadwal FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Schedules.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Schedules.class))})})
     @Operation(summary = "menampilkan jadwal film sesuai dengan code film")
-    @GetMapping(value="/film-schedules/{filmCode}")
+    @GetMapping(value = "/film-schedules/{filmCode}")
     public List<Schedules> findFilmsSchedules(@PathVariable("filmCode") Long filmCode) {
         List<Schedules> schedules = schedulesService.findFilmsSchedules(filmCode);
-        schedules.forEach(s->{
+        schedules.forEach(s -> {
             System.out.println(s.getFilmCode().getFilmName());
             System.out.println(s.getTglTayang());
             System.out.println(s.getJamMulai());

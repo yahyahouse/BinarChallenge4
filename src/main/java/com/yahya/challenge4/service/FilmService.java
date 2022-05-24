@@ -9,13 +9,20 @@ import java.util.Optional;
 
 @Service
 public interface FilmService {
-    public void addFilms( String nameFilm, Boolean Tayang);
+    public void addFilms(String nameFilm, Boolean Tayang);
+
     Optional<Films> getFilm(Long codeFilm);
+
     public void updateFilm(Long filmCode, String filmNameNew, Boolean TayangNew);
+
     public void deleteFilm(String filmName);
+
     void deleteFilmById(Long filmCode);
-    List<Films> getFilmTayang (Boolean Tayang);
+
+    List<Films> getFilmTayang(Boolean Tayang);
+
     List<Films> getAll();
+
     public Films findFilmCode(Long filmCode);
 
 

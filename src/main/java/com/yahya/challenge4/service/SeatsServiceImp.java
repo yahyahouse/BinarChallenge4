@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SeatsServiceImp implements SeatsService{
+public class SeatsServiceImp implements SeatsService {
     @Autowired
     private SeatsRepository seatsRepository;
+
     @Override
     public Seats getNoKursi(Integer noKursi, String studioName) {
 
-        return seatsRepository.findNoKursi(noKursi,studioName);
+        return seatsRepository.findNoKursi(noKursi, studioName);
     }
 }

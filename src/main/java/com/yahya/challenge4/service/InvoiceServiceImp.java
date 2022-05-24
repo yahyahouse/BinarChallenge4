@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class InvoiceServiceImp implements InvoiceService{
+public class InvoiceServiceImp implements InvoiceService {
     @Autowired
-    private  FilmService filmService;
+    private FilmService filmService;
 
     @Autowired
     private SchedulesService schedulesService;
@@ -33,9 +33,10 @@ public class InvoiceServiceImp implements InvoiceService{
     private SchedulesRepository schedulesRepository;
 
     @Autowired
-    private  UsersService usersService;
+    private UsersService usersService;
 
-    @Autowired SeatsService seatsService;
+    @Autowired
+    SeatsService seatsService;
 
     @Override
     public void generateInvoice(HttpServletResponse response) throws IOException, JRException {
@@ -49,14 +50,14 @@ public class InvoiceServiceImp implements InvoiceService{
         Map<String, String> data = new HashMap<>();
         Users user = usersService.getUsersByUsername("yahya");
         data.put("username", user.getUsername());
-        Seats seat = seatsService.getNoKursi(1,"A");
+        Seats seat = seatsService.getNoKursi(1, "A");
         data.put("noKursi", String.valueOf(seat.getId().getNoKursi()));
         data.put("studioName", String.valueOf(seat.getId().getStudioName()));
         Schedules schedule = schedulesService.getSchedulesById(1L);
         data.put("filmName", String.valueOf(schedule.getFilmCode().getFilmName()));
-        data.put("tglTayang",schedule.getTglTayang());
-        data.put("jamMulai",schedule.getJamMulai());
-        data.put("jamSelesai",schedule.getJamSelesai());
+        data.put("tglTayang", schedule.getTglTayang());
+        data.put("jamMulai", schedule.getJamMulai());
+        data.put("jamSelesai", schedule.getJamSelesai());
         dataList.add(data);
 
         // creating datasource from bean list

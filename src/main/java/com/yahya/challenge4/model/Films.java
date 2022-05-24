@@ -26,9 +26,10 @@ public class Films {
 
     @Override
     public String toString() {
-        return "films [  film_id : " + filmCode+ "" +
+        return "films [  film_id : " + filmCode + "" +
                 "\n\t\t film_name : " + filmName + " \n\t\t tayang : " + tayang + " ]";
     }
+
     public Films(String filmName, Boolean tayang) {
         this.filmName = filmName;
         this.tayang = tayang;

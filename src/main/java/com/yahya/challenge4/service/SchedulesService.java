@@ -8,9 +8,11 @@ import java.util.List;
 @Service
 public interface SchedulesService {
 
-    void addSchedules (Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode);
+    void addSchedules(Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode);
+
     List<Schedules> findFilmsSchedules(Long filmCode);
-//    public Schedules getSchedulesById(Long filmCode);
+
+    //    public Schedules getSchedulesById(Long filmCode);
 //    public Schedules getSchedulesByCodeName(Long filmCode);
     public Schedules getSchedulesById(Long scheduleId);
 

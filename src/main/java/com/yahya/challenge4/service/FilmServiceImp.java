@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FilmServiceImp implements FilmService{
+public class FilmServiceImp implements FilmService {
 
     @PersistenceContext
     private EntityManager em;
@@ -35,7 +35,7 @@ public class FilmServiceImp implements FilmService{
 
     @Override
     public void updateFilm(Long filmCode, String filmNameNew, Boolean TayangNew) {
-        filmRepository.updateFilm(filmCode,filmNameNew,TayangNew);
+        filmRepository.updateFilm(filmCode, filmNameNew, TayangNew);
     }
 
     @Override

@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UsersServiceImp implements UsersService{
+public class UsersServiceImp implements UsersService {
     @Autowired
     private UsersRepository usersRepository;
+
     @Override
-    public void addUser(Integer userId,String username, String password, String email) {
+    public void addUser(Integer userId, String username, String password, String email) {
         Users user = new Users();
         user.setUsername(username);
         user.setPassword(password);
@@ -22,7 +23,7 @@ public class UsersServiceImp implements UsersService{
 
     @Override
     public void updateUsers(Integer userId, String newUsername, String newPassword, String newEmail) {
-        usersRepository.updateUsers(userId,newUsername,newPassword,newEmail);
+        usersRepository.updateUsers(userId, newUsername, newPassword, newEmail);
     }
 
     @Override

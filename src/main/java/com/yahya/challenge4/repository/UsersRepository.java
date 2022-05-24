@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users,Integer> {
+public interface UsersRepository extends JpaRepository<Users, Integer> {
     @Transactional
     @Modifying
     @Query("UPDATE users u SET u.username=?2, u.password=?3, u.email=?4 WHERE u.userId=?1")
-    void updateUsers(Integer userId,String username,String password, String email);
+    void updateUsers(Integer userId, String username, String password, String email);
 
     @Transactional
     @Modifying

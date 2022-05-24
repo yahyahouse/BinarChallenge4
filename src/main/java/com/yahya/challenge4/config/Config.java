@@ -19,11 +19,11 @@ public class Config {
 
     @Bean
     public void prerun() {
-        for(ERole c : ERole.values()) {
+        for (ERole c : ERole.values()) {
             try {
                 Roles roles = roleRepository.findByName(c)
                         .orElseThrow(() -> new RuntimeException("Roles not found"));
-            } catch(RuntimeException rte) {
+            } catch (RuntimeException rte) {
                 LOG.info("Role " + c.name() + " is not found, inserting to DB . . .");
                 Roles roles = new Roles();
                 roles.setName(c);

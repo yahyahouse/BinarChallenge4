@@ -6,5 +6,5 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public interface InvoiceService {
-    void generateInvoice (HttpServletResponse response) throws IOException, JRException;
+    void generateInvoice(HttpServletResponse response) throws IOException, JRException;
 }

@@ -27,86 +27,86 @@ public class FilmsController {
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menambahkan film",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))}),
             @ApiResponse(responseCode = "400", description = "Gagal Menambahkan Film",
-                    content = @Content) })
+                    content = @Content)})
     @Operation(summary = "menambahkan film ke tabel film pada database")
     @PostMapping("/add-film")
     public String addFilms(@Schema(example = "{" +
             "\"nameFilm\":\"Programmer naik haji\"," +
             "\"Tayang\":\"1\"" +
-            "}") @RequestBody Map<String, Object> film){
+            "}") @RequestBody Map<String, Object> film) {
         filmService.addFilms(film.get("nameFilm").toString(), Boolean.valueOf(film.get("tayang").toString()));
-        return"film berhasil ditambahkan";
+        return "film berhasil ditambahkan";
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menampilkan FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menampilkan film sesuai dengan code film yang dimasukan")
-    @GetMapping(value="/get-film/{codeFilm}")
+    @GetMapping(value = "/get-film/{codeFilm}")
     public Films getFilms(@Schema(example = "{" +
             "\"codeFilm\":\"1\"," +
-            "}")@PathVariable("codeFilm") Long codeFilm) {
+            "}") @PathVariable("codeFilm") Long codeFilm) {
         Films film = filmService.getFilm(codeFilm).get();
-        System.out.println("Film Name : " + film.getFilmName() + "\nTayang : " + film.getTayang());
+        LOG.info("Film Name : " + film.getFilmName() + "\nTayang : " + film.getTayang());
         return film;
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil meng-Update FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "mengubah isi tabel film yang sudah ada pada database")
-    @PutMapping(value="/update-film")
+    @PutMapping(value = "/update-film")
     public String updateFilm(@Schema(example = "{" +
             "\"filmCode\":\"1\"," +
             "\"filmName\":\"Programmer naik haji\"," +
             "\"Tayang\":\"1\"" +
-            "}")Long filmCode, String filmName, Boolean Tayang){
-        filmService.updateFilm(filmCode,filmName,Tayang);
+            "}") Long filmCode, String filmName, Boolean Tayang) {
+        filmService.updateFilm(filmCode, filmName, Tayang);
         return "update berhasil";
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menghapus FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menghapus isi tabel film sesuai dengan nama film")
-    @DeleteMapping(value="/delete-film/{filmName}")
+    @DeleteMapping(value = "/delete-film/{filmName}")
     public String deleteFilm(@Schema(example = "{" +
             "\"filmName\":\"Programmer naik haji\"," +
-            "}")@PathVariable("filmName")String filmName){
+            "}") @PathVariable("filmName") String filmName) {
         filmService.deleteFilm(filmName);
         return "berhasil menghapus";
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menghapus FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menghapus isi tabel film sesuai dengan code film")
     @DeleteMapping(value = "/delete-film-by-id/{filmCode}")
-    public  String deleteFilmById(@Schema(example = "{" +
+    public String deleteFilmById(@Schema(example = "{" +
             "\"filmCode\":\"1\"," +
-            "}")@PathVariable("filmCode")Long filmCode){
+            "}") @PathVariable("filmCode") Long filmCode) {
         filmService.deleteFilmById(filmCode);
-        return  "berhasil dihapus";
+        return "berhasil dihapus";
     }
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menampilkan FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menampilkan isi tabel film yang sedang tayang")
     @GetMapping(value = "/film-sedang-tayang")
     public List<Films> filmTayang(@Schema(example = "{" +
             "\"tayang\":\"1\"," +
-            "}")Boolean Tayang){
+            "}") Boolean Tayang) {
         List<Films> films = filmService.getFilmTayang(Tayang);
-        films.forEach(film ->{
+        films.forEach(film -> {
             System.out.println(film.getFilmName());
         });
         return films;
@@ -114,13 +114,13 @@ public class FilmsController {
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Berhasil Menampilkan FIlm",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Films.class)) })})
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menampilkan semua isi tabel pada tabel film")
-    @RequestMapping(value ="/film",method = RequestMethod.GET)
-    public List<Films> allFilms(){
+    @RequestMapping(value = "/film", method = RequestMethod.GET)
+    public List<Films> allFilms() {
         List<Films> films = filmService.getAll();
-        films.forEach(film->{
+        films.forEach(film -> {
             System.out.println(film.getFilmCode());
             System.out.println(film.getFilmName());
         });

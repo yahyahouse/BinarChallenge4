@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
-public class SchedulesServiceImp implements SchedulesService{
+public class SchedulesServiceImp implements SchedulesService {
     @PersistenceContext
     private EntityManager em;
 
