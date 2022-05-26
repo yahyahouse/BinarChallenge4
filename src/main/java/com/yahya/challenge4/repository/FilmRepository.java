@@ -15,13 +15,11 @@ import java.util.Optional;
 @Repository
 public interface FilmRepository extends JpaRepository<Films, Integer> {
 
-//    @Query(value="insert into films(film_code,film_name,tayang) values(?1,?2,?3)",nativeQuery = true)
-//    public void insertFilm(Integer filmCode,String nameFilm, Boolean tayang);
 
     @Transactional
     @Modifying
     @Query("UPDATE films f SET f.filmName=?2, f.tayang=?3 WHERE f.filmCode=?1")
-    void updateFilm(Long filmCode, String filmName, Boolean Tayang);
+    void updateFilm(Long filmCode, String filmName, Boolean filmTayang);
 
     @Transactional
     @Modifying

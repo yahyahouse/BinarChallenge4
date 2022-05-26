@@ -15,7 +15,7 @@ class SchedulesTest {
     @Test
     @DisplayName("Test menampilkan jadwal film tertentu")
     void getJadwalFilm(){
-        Schedules schedules = (Schedules) schedulesController.findFilmsSchedules(1L);
+        Schedules schedules = (Schedules) schedulesController.findFilmsSchedules(6L);
     }
 
 //    @Test

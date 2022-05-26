@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
+    @Autowired
+    RoleRepository roleRepository;
 
     private static final Logger LOG = LoggerFactory.getLogger(Config.class);
 
-    @Autowired
-    RoleRepository roleRepository;
 
     @Bean
     public void prerun() {
         for (ERole c : ERole.values()) {
             try {
-                Roles roles = roleRepository.findByName(c)
+                roleRepository.findByName(c)
                         .orElseThrow(() -> new RuntimeException("Roles not found"));
             } catch (RuntimeException rte) {
                 LOG.info("Role " + c.name() + " is not found, inserting to DB . . .");

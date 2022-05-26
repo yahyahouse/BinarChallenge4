@@ -11,11 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @TestConfiguration
-public class test {
-//    @Bean
-//    public HttpClient
+class testSpy {
     @Test
-    public void testSpy(){
+    void testSpy(){
         List<String> list = new ArrayList<>();
         List<String> spyList = Mockito.spy(list);
 

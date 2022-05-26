@@ -23,7 +23,11 @@ public class UsersTest {
 
     @Test
     @DisplayName("Test UPDATE user")
-    public void updateUser(){usersController.updateUser(1,"yahya","1234567","yahya@email.com");}
+    public void updateUser(){
+        String updateUser = usersController.updateUser(1,"yahya","1234567","yahya@email.com");
+        Assertions.assertEquals("update berhasil",updateUser);
+    }
+
 
     @Test
     @DisplayName("Test DELETE user")

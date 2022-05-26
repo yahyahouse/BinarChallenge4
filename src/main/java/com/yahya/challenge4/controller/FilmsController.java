@@ -117,13 +117,9 @@ public class FilmsController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menampilkan semua isi tabel pada tabel film")
-    @RequestMapping(value = "/film", method = RequestMethod.GET)
+    @GetMapping(value = "/film")
     public List<Films> allFilms() {
         List<Films> films = filmService.getAll();
-        films.forEach(film -> {
-            System.out.println(film.getFilmCode());
-            System.out.println(film.getFilmName());
-        });
         return films;
     }
 
