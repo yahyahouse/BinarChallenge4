@@ -1,6 +1,7 @@
-package com.yahya.challenge4;
+package com.yahya.challenge4.FilmTest;
 
 import com.yahya.challenge4.controller.FilmsController;
+import com.yahya.challenge4.service.FilmService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,23 +12,24 @@ public class FilmsTest {
 
     @Autowired
     private FilmsController filmController;
-
-//    @Test
-//    @DisplayName("Test menambahkan film")
-//    public void addFilm(){
-//        String tambah = filmController.addFilms("Programer Naik Haji", true);
-//        Assertions.assertEquals("film berhasil ditambahkan",tambah);
-//    }
-
-//    @Test
-//    @DisplayName("Test GET Film")
-//    public void getFilms() {
-//        filmController.getFilms(6L);
-//    }
+    @Autowired
+    private FilmService filmService;
 
     @Test
-    @DisplayName("Test UPDATE film")
-    public void updateFilm(){filmController.updateFilm(1L,"Programer Naik Gaji",true);}
+    @DisplayName("Test menambahkan film")
+    public void addFilm(){
+        filmService.addFilms("Programer Naik Haji", true);
+    }
+
+    @Test
+    @DisplayName("Test GET Film")
+    public void getFilms() {
+        filmController.getFilms(6L);
+    }
+
+//    @Test
+//    @DisplayName("Test UPDATE film")
+////    public void updateFilm(){filmController.updateFilm(1L,"Programer Naik Haji",true);}
 
     @Test
     @DisplayName("Test DELETE film")

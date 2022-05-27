@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +42,7 @@ public class AuthController {
     JwtUtils jwtUtils;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody Map<String, Object> login) {
+    public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody Map<String, Object> login) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(login.get("username"), login.get("password"))
         );
@@ -51,7 +52,7 @@ public class AuthController {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
@@ -60,13 +61,15 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
-        if(usersRepository.existsByUsername(signupRequest.getUsername())) {
+    public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
+        Boolean usernameExist = usersRepository.existsByUsername(signupRequest.getUsername());
+        if(Boolean.TRUE.equals(usernameExist)) {
             return ResponseEntity.badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if(usersRepository.existsByEmail(signupRequest.getEmail())) {
+        Boolean emailExist = usersRepository.existsByEmail(signupRequest.getEmail());
+        if(Boolean.TRUE.equals(emailExist)) {
             return ResponseEntity.badRequest()
                     .body(new MessageResponse("Error: Email is already taken!"));
         }
@@ -79,7 +82,7 @@ public class AuthController {
 
         if(strRoles == null) {
             Roles role = roleRepository.findByName(ERole.CUSTOMER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found"));;
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found"));
             roles.add(role);
         } else {
             strRoles.forEach(role -> {

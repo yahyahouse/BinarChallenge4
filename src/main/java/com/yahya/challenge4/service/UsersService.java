@@ -2,7 +2,7 @@ package com.yahya.challenge4.service;
 
 import com.yahya.challenge4.model.Users;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface UsersService {
     public void addUser(Integer userId, String username, String password, String email);
@@ -13,5 +13,7 @@ public interface UsersService {
 
     public Users getUsersByUsername(String username);
 
-    Optional<Users> getUsername(String username);
+    public void getUsername(String username);
+
+    public List<Users> getAllUsers();
 }

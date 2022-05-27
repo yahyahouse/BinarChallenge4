@@ -1,4 +1,4 @@
-package com.yahya.challenge4;
+package com.yahya.challenge4.FilmTest;
 
 import com.yahya.challenge4.controller.SchedulesController;
 import com.yahya.challenge4.model.Schedules;

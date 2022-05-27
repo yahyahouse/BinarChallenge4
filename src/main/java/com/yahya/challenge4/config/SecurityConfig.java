@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean();
     }
 
@@ -55,14 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/film/api/add-film").hasAuthority(ERole.ADMIN.name())
-                .antMatchers("/film/api/update-film").hasAuthority(ERole.ADMIN.name())
-                .antMatchers("/film/api/delete-film/**").hasAuthority(ERole.ADMIN.name())
-                .antMatchers("/user/api/**").hasAuthority(ERole.CUSTOMER.name())
-                .antMatchers("/film/api/film-sedang-tayang").hasAuthority(ERole.CUSTOMER.name())
-//                .antMatchers("/user/api/delete-user").hasAuthority(ERole.CUSTOMER.name())
-                .antMatchers("/schedules/api/film-schedules/**").hasAuthority(ERole.CUSTOMER.name())
-                .antMatchers("/invoice/api/tiket-bioskop").hasAuthority(ERole.CUSTOMER.name())
+                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/**").permitAll()
+                .antMatchers("/api/test/**").permitAll()
+                .antMatchers("/users/admin/**").hasAuthority(ERole.ADMIN.name())
+                .antMatchers("/users/customer/**").hasAuthority(ERole.CUSTOMER.name())
+                .antMatchers("/users/public/**").hasAnyAuthority(ERole.ADMIN.name(), ERole.CUSTOMER.name())
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

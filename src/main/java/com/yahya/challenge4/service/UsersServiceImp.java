@@ -2,15 +2,24 @@ package com.yahya.challenge4.service;
 
 import com.yahya.challenge4.model.Users;
 import com.yahya.challenge4.repository.UsersRepository;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UsersServiceImp implements UsersService {
+    private static final Logger LOG = LoggerFactory.getLogger(UsersServiceImp.class);
     @Autowired
     private UsersRepository usersRepository;
+    @Autowired
+    public void UserServiceImpl(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
 
     @Override
     public void addUser(Integer userId, String username, String password, String email) {
@@ -37,7 +46,12 @@ public class UsersServiceImp implements UsersService {
     }
 
     @Override
-    public Optional<Users> getUsername(String username) {
-        return usersRepository.getUsersByUsername(username);
+    public void getUsername(String username) {
+        usersRepository.getUsersByUsername(username);
+    }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return usersRepository.findAll();
     }
 }

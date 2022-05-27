@@ -20,6 +20,11 @@ public class Roles {
     private ERole name;
 
     public Roles() {
-
+        // This method is empty because it is needed when object is ready
     }
+    public Roles(Integer roleId, ERole name){
+        this.roleId = roleId;
+        this.name = name;
+    }
+
 }

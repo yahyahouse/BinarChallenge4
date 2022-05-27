@@ -10,8 +10,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -33,12 +39,15 @@ public class FilmsController {
                     content = @Content)})
     @Operation(summary = "menambahkan film ke tabel film pada database")
     @PostMapping("/add-film")
-    public String addFilms(@Schema(example = "{" +
+    public ResponseEntity<RestTemplate> addFilms(@Schema(example = "{" +
             "\"nameFilm\":\"Programmer naik haji\"," +
-            "\"Tayang\":\"1\"" +
+            "\"tayang\":\"1\"" +
             "}") @RequestBody Map<String, Object> film) {
         filmService.addFilms(film.get("nameFilm").toString(), Boolean.valueOf(film.get("tayang").toString()));
-        return "film berhasil ditambahkan";
+        MultiValueMap<String, String> headers = new HttpHeaders();
+        headers.put("Binar", Arrays.asList("Test"));
+
+        return new ResponseEntity(headers, HttpStatus.valueOf(200));
     }
 
     @ApiResponses(value = {
@@ -51,7 +60,7 @@ public class FilmsController {
             "\"codeFilm\":\"1\"," +
             "}") @PathVariable("codeFilm") Long codeFilm) {
         Films film = filmService.getFilm(codeFilm).get();
-        LOG.info("Film Name : " + film.getFilmName() + "\nTayang : " + film.getTayang());
+        LOG.info("Jumlah Film: {}", film);
         return film;
     }
 
@@ -64,9 +73,9 @@ public class FilmsController {
     public String updateFilm(@Schema(example = "{" +
             "\"filmCode\":\"1\"," +
             "\"filmName\":\"Programmer naik haji\"," +
-            "\"Tayang\":\"1\"" +
-            "}") Long filmCode, String filmName, Boolean Tayang) {
-        filmService.updateFilm(filmCode, filmName, Tayang);
+            "\"tayang\":\"1\"" +
+            "}") @RequestBody Map<String, Object> film) {
+        filmService.updateFilm(Long.valueOf(film.get("filmCode").toString()),film.get("filmName").toString(), Boolean.valueOf(film.get("tayang").toString()));
         return "update berhasil";
     }
 
@@ -107,7 +116,7 @@ public class FilmsController {
             "}") Boolean Tayang) {
         List<Films> films = filmService.getFilmTayang(Tayang);
         films.forEach(film -> {
-            System.out.println(film.getFilmName());
+            LOG.info(film.getFilmName());
         });
         return films;
     }
@@ -120,6 +129,7 @@ public class FilmsController {
     @GetMapping(value = "/film")
     public List<Films> allFilms() {
         List<Films> films = filmService.getAll();
+        LOG.info("Film ditampilkan");
         return films;
     }
 

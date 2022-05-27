@@ -1,8 +1,9 @@
 package com.yahya.challenge4;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.boot.test.context.TestConfiguration;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@TestConfiguration
-class testSpy {
+@ExtendWith(MockitoExtension.class)
+public class testSpy {
     @Test
     void testSpy(){
         List<String> list = new ArrayList<>();
