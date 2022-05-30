@@ -43,20 +43,4 @@ public class SchedulesServiceImp implements SchedulesService {
         return schedulesRepository.findByScheduleId(scheduleId);
     }
 
-//    @Override
-//    public Schedules getSchedulesById(Long filmCode) {
-//        String query = "SELECT f.film_name as film , s.harga as harga\n" +
-//                "FROM schedules s\n" +
-//                "inner JOIN films f ON f.film_code=s.film_code " +
-//                "where s.film_code =?1";
-//        Query q =  em.createNativeQuery(query);
-//        q.setParameter(1, filmCode);
-//        return (Schedules) q.getSingleResult();
-//    }
-
-//    @Override
-//    public Schedules getSchedulesByCodeName(Long filmCode) {
-//        return schedulesRepository.findFilmCode(filmCode);
-//    }
-
 }

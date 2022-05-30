@@ -38,9 +38,6 @@ public class Users {
     }
 
     public Users() {
-        userId = this.userId;
-        email = this.email;
-        password = this.password;
-    }
 
+    }
 }

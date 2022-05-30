@@ -41,6 +41,19 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    public AuthController() {
+
+    }
+
+    public AuthController(AuthenticationManager authenticationManager, UsersRepository usersRepository,
+                          JwtUtils jwtUtils, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.authenticationManager = authenticationManager;
+        this.usersRepository = usersRepository;
+        this.jwtUtils = jwtUtils;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody Map<String, Object> login) {
         Authentication authentication = authenticationManager.authenticate(

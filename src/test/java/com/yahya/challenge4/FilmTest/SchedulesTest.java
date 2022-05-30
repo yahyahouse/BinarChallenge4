@@ -1,7 +1,7 @@
 package com.yahya.challenge4.FilmTest;
 
 import com.yahya.challenge4.controller.SchedulesController;
-import com.yahya.challenge4.model.Schedules;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +14,14 @@ class SchedulesTest {
 
     @Test
     @DisplayName("Test menampilkan jadwal film tertentu")
-    void getJadwalFilm(){
-        Schedules schedules = (Schedules) schedulesController.findFilmsSchedules(6L);
+    void getJadwalFilm() {
+        Assertions.assertDoesNotThrow(() -> schedulesController.findFilmsSchedules(1L));
     }
 
-//    @Test
-//    @DisplayName("Test menambahkan Schedules")
-//    public void addSchedules(){
-//        schedulesController.addSchedule(45000,"13.00","15.00","5 Maret 2021",1L);
-//    }
+    @Test
+    @DisplayName("Test menambahkan Schedules")
+    void addSchedules() {
+        Assertions.assertDoesNotThrow(() -> schedulesController.addSchedule(45000, "13.00",
+                "15.00", "5 Maret 2021", 1L));
+    }
 }

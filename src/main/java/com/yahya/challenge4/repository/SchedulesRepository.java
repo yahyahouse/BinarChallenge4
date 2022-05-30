@@ -9,17 +9,10 @@ import java.util.List;
 
 @Repository
 public interface SchedulesRepository extends JpaRepository<Schedules, Integer> {
-//    @Query("select s from schedules s where s.filmCode=:filmCode")
-//    Optional<Schedules> findFilmsSchedules(Long filmCode);
 
-//    @Query("select s from schedules s where s.scheduleId =:scheduleId")
-//    Optional<Schedules> findByScheduleId(Long scheduleId);
 
     @Query(value = "insert into schedules (harga,jam_mulai,jam_selesai,tgl_tayang,film_code) values(?1,?2,?3,?4,?5)", nativeQuery = true)
     public void insertFilm(Integer harga, String jamMulai, String jamSelesai, String tglTayang, Long filmCode);
-
-
-//    Schedules findFilmCode(Long filmCode);
 
     @Query(value = "select * from schedules s where s.film_code=?1", nativeQuery = true)
     List<Schedules> findFilmsSchedules(Long filmCode);

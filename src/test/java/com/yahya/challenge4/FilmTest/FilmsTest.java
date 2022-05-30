@@ -2,13 +2,14 @@ package com.yahya.challenge4.FilmTest;
 
 import com.yahya.challenge4.controller.FilmsController;
 import com.yahya.challenge4.service.FilmService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class FilmsTest {
+class FilmsTest {
 
     @Autowired
     private FilmsController filmController;
@@ -17,36 +18,33 @@ public class FilmsTest {
 
     @Test
     @DisplayName("Test menambahkan film")
-    public void addFilm(){
-        filmService.addFilms("Programer Naik Haji", true);
+    void addFilm(){
+        Assertions.assertDoesNotThrow(() -> filmService.addFilms("Programer Naik Haji", true));
     }
 
     @Test
     @DisplayName("Test GET Film")
-    public void getFilms() {
-        filmController.getFilms(6L);
+    void getFilms() {
+        Assertions.assertDoesNotThrow(() ->filmController.getFilms(6L));
     }
 
-//    @Test
-//    @DisplayName("Test UPDATE film")
-////    public void updateFilm(){filmController.updateFilm(1L,"Programer Naik Haji",true);}
 
     @Test
     @DisplayName("Test DELETE film")
-    public void deleteFilm(){
-        filmController.deleteFilm("Programer Naik Haji");
+    void deleteFilm(){
+        Assertions.assertDoesNotThrow(() ->filmController.deleteFilm("Programer Naik Haji"));
     }
 
     @Test
     @DisplayName("Test menampilkan film tayang")
-    public void filmTayang(){
-        filmController.filmTayang(true);
+    void filmTayang(){
+        Assertions.assertDoesNotThrow(() ->filmController.filmTayang(true));
     }
 
     @Test
     @DisplayName("Test mengambil data semua film")
-    public void getAll(){
-        filmController.allFilms();
+    void getAll(){
+        Assertions.assertDoesNotThrow(() ->filmController.allFilms());
     }
 
 }

@@ -8,12 +8,15 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user/api")
 public class UsersController {
+    private static final Logger LOG = LoggerFactory.getLogger(UsersController.class);
     @Autowired
     private UsersService userService;
 
@@ -68,8 +71,7 @@ public class UsersController {
     @GetMapping(value="/get-user/{username}")
     public Users getUsersByUsername(@PathVariable("username") String username) {
         Users user = userService.getUsersByUsername(username);
-        System.out.println("Username : " + user.getUsername()
-                + "\nEmail : " + user.getEmail());
+        LOG.info("film added: {}", getUsersByUsername(username));
         return user;
     }
 }

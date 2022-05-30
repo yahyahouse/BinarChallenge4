@@ -44,8 +44,6 @@ public class InvoiceServiceImp implements InvoiceService {
                 .compileReport(ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX
                         + "tiketBioskop.jrxml").getAbsolutePath());
 
-        // creating our list of beans
-//        List<Users> dataList = new ArrayList<>();
         List<Map<String, String>> dataList = new ArrayList<>();
         Map<String, String> data = new HashMap<>();
         Users user = usersService.getUsersByUsername("yahya");
@@ -62,7 +60,7 @@ public class InvoiceServiceImp implements InvoiceService {
 
         // creating datasource from bean list
         JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList);
-        Map<String, Object> parameters = new HashMap();
+        Map<String, Object> parameters = new HashMap<>();
         parameters.put("createdBy", "Yahya");
         JasperPrint jasperPrint = JasperFillManager.fillReport(sourceFileName, parameters, beanColDataSource);
         response.setContentType("application/pdf");

@@ -15,11 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -39,7 +39,7 @@ public class FilmsController {
                     content = @Content)})
     @Operation(summary = "menambahkan film ke tabel film pada database")
     @PostMapping("/add-film")
-    public ResponseEntity<RestTemplate> addFilms(@Schema(example = "{" +
+    public ResponseEntity<HttpStatus> addFilms(@Schema(example = "{" +
             "\"nameFilm\":\"Programmer naik haji\"," +
             "\"tayang\":\"1\"" +
             "}") @RequestBody Map<String, Object> film) {
@@ -47,7 +47,7 @@ public class FilmsController {
         MultiValueMap<String, String> headers = new HttpHeaders();
         headers.put("Binar", Arrays.asList("Test"));
 
-        return new ResponseEntity(headers, HttpStatus.valueOf(200));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @ApiResponses(value = {
@@ -56,12 +56,12 @@ public class FilmsController {
                             schema = @Schema(implementation = Films.class))})})
     @Operation(summary = "menampilkan film sesuai dengan code film yang dimasukan")
     @GetMapping(value = "/get-film/{codeFilm}")
-    public Films getFilms(@Schema(example = "{" +
+    public ResponseEntity<Optional<Films>> getFilms(@Schema(example = "{" +
             "\"codeFilm\":\"1\"," +
             "}") @PathVariable("codeFilm") Long codeFilm) {
-        Films film = filmService.getFilm(codeFilm).get();
-        LOG.info("Jumlah Film: {}", film);
-        return film;
+        Optional<Films> films= filmService.getFilm(codeFilm);
+        LOG.info("Jumlah Film: {}", films);
+        return ResponseEntity.ok(films);
     }
 
     @ApiResponses(value = {
@@ -113,11 +113,9 @@ public class FilmsController {
     @GetMapping(value = "/film-sedang-tayang")
     public List<Films> filmTayang(@Schema(example = "{" +
             "\"tayang\":\"1\"," +
-            "}") Boolean Tayang) {
-        List<Films> films = filmService.getFilmTayang(Tayang);
-        films.forEach(film -> {
-            LOG.info(film.getFilmName());
-        });
+            "}") Boolean Show) {
+        List<Films> films = filmService.getFilmTayang(Show);
+        films.forEach(film -> LOG.info(film.getFilmName()));
         return films;
     }
 

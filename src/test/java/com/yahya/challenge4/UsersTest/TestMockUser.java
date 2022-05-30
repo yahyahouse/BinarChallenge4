@@ -35,7 +35,13 @@ class TestMockUser {
     @Test
     @DisplayName("Test UPDATE User")
     void TestUpdateUser(){
-
+        Users updateUsers = new Users();
+        updateUsers.setUserId(1);
+        updateUsers.setEmail("update@email.com");
+        updateUsers.setPassword("update");
+        updateUsers.setUsername("update");
+        Assertions.assertDoesNotThrow(() -> usersService.updateUsers(updateUsers.getUserId(), updateUsers.getUsername()
+                , updateUsers.getPassword(), updateUsers.getEmail()));
     }
 
 }
