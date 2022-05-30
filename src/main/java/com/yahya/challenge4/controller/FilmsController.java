@@ -113,8 +113,8 @@ public class FilmsController {
     @GetMapping(value = "/film-sedang-tayang")
     public List<Films> filmTayang(@Schema(example = "{" +
             "\"tayang\":\"1\"," +
-            "}") Boolean Show) {
-        List<Films> films = filmService.getFilmTayang(Show);
+            "}") Boolean showTayang) {
+        List<Films> films = filmService.getFilmTayang(showTayang);
         films.forEach(film -> LOG.info(film.getFilmName()));
         return films;
     }
